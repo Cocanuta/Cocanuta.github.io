@@ -129,3 +129,12 @@ label.css-label {
     bottom: 5px;
     
 }
+.expander
+{
+    position: absolute;
+    left: 92.5%;
+}
+.content {display:none;}
+
+
+

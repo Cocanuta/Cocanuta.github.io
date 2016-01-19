@@ -131,18 +131,23 @@ function initialize() {
 
         if (item["Type"] == "Movie") {
             newItem.className = "bubble movie";
+            label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
         }
         if (item["Type"] == "TV") {
             newItem.className = "bubble tv";
+            label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " " + name + " - " + runtime + "min"));
         }
         if (item["Type"] == "Netflix") {
             newItem.className = "bubble netflix";
+            label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " " + name + " - " + runtime + "min"));
         }
         if (item["Type"] == "OneShot") {
             newItem.className = "bubble oneshot";
+            label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
         }
         if (item["Type"] == "WHIH") {
             newItem.className = "bubble whih";
+            label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
         }
 
         checkbox.type = "checkbox";
@@ -153,7 +158,6 @@ function initialize() {
 
         label.htmlFor = name;
         label.className = "css-label";
-        label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
 
         newItem.appendChild(checkbox);
         newItem.appendChild(label);

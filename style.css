@@ -1,0 +1,131 @@
+.bubble {
+    position:relative;
+    padding:15px;
+    margin:1vh 0 1vh;
+    color:#fff;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    z-index: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.bubble.movie {
+    background: #3150c8;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#6f86c8), to(#3150c8));
+    background:-moz-linear-gradient(#6f86c8, #3150c8);
+    background:-o-linear-gradient(#6f86c8, #3150c8);
+    background:linear-gradient(#6f86c8, #3150c8);
+}
+.bubble.oneshot {
+    background: #9a3aa4;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#be42c8), to(#9a3aa4));
+    background:-moz-linear-gradient(#be42c8, #9a3aa4);
+    background:-o-linear-gradient(#be42c8, #9a3aa4);
+    background:linear-gradient(#be42c8, #9a3aa4);
+}
+.bubble.tv {
+    background: #369c3b;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#3fc844), to(#369c3b));
+    background:-moz-linear-gradient(#3fc844, #369c3b);
+    background:-o-linear-gradient(#3fc844, #369c3b);
+    background:linear-gradient(#3fc844, #369c3b);
+}
+.bubble.netflix {
+    background:#c81e2b;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f04349), to(#c81e2b));
+    background:-moz-linear-gradient(#f04349, #c81e2b);
+    background:-o-linear-gradient(#f04349, #c81e2b);
+    background:linear-gradient(#f04349, #c81e2b);
+}
+.bubble.whih {
+    background: #cb903c;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#dfa53b), to(#cb903c));
+    background:-moz-linear-gradient(#dfa53b, #cb903c);
+    background:-o-linear-gradient(#dfa53b, #cb903c);
+    background:linear-gradient(#dfa53b, #cb903c);
+}
+
+.bubblebackground {
+    position: absolute;
+    right: 0;
+    z-index:-1;
+    font-size: 3vw;
+    overflow: hidden;
+    opacity: 0.5;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=checkbox].css-checkbox {
+    position:absolute;
+    z-index:0;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:35px;
+    height:30px;
+    display:inline-block;
+    line-height:30px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5vh;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -30px;
+}
+label.css-label {
+    background-image:url(images/checkbox.png);
+    background-size: auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.header
+{
+    background:#c81e2b;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f04349), to(#c81e2b));
+    background:-moz-linear-gradient(#f04349, #c81e2b);
+    background:-o-linear-gradient(#f04349, #c81e2b);
+    background:linear-gradient(#f04349, #c81e2b);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5vw;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    text-align: center;
+    padding:0px;
+    margin:3px 0 3px;
+
+}
+
+.container
+{
+    top: 25vh;
+    right: 5px;
+    left: 5px;
+    bottom: 5px;
+    
+}

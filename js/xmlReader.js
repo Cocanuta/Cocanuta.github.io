@@ -33,6 +33,20 @@ $(document).ready(function () {
     {
         var time = secondsToTime(overallRuntime);
         document.getElementById("remainingTime").innerHTML = time["d"] + " Days " + time["h"] + " Hours " + time["m"] + " Minutes";
+
+        var checkboxes = document.getElementsByClassName("css-checkbox");
+        var count = 0;
+        var sum = 0;
+        for(var i = 0; i < checkboxes.length; i++)
+        {
+            if(!checkboxes[i].checked)
+            {
+                count++;
+                sum += parseInt(items[i]["Runtime"].data);
+            }
+        }
+        var avg = sum / count;
+        document.getElementById("remainingWatch").innerHTML = "YOU MUST WATCH " + Math.ceil((sum / DaysTillCivilWar()) / avg) + " ITEMS  PER DAY";
     }
 
     function secondsToTime(mins)
@@ -94,6 +108,28 @@ $(document).ready(function () {
         showRemaining();
 
         timer = setInterval(showRemaining, 60000);
+    }
+
+
+    function DaysTillCivilWar()
+    {
+        var end = new Date('04/29/2016 00:01 AM');
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        var now = new Date();
+        var distance = end - now;
+
+        var days = Math.floor(distance / _day);
+
+        return days;
+
+
+
     }
 
     function setCookie(c_name, value, expiredays)

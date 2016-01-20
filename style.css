@@ -1,3 +1,8 @@
+body
+{
+    background: #0f0f0f;
+}
+
 .bubble {
     position:relative;
     padding:15px;

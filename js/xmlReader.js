@@ -135,39 +135,48 @@ $(document).ready(function () {
             var expander = document.createElement("a");
 
             expander.className = "expander";
-            expander.appendChild(document.createTextNode("EXPAND"));
+
             expander.href = "#";
+
+            var poster = document.createElement("img");
+            poster.src = "images/posters/" + item["Poster"].data + ".jpg";
+            poster.className = "poster";
+            details.appendChild(poster);
+
+            var title = document.createElement("p");
+            title.className = "details title";
 
             if (item["Type"] == "Movie") {
                 newItem.className = "bubble movie";
                 label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
+                title.appendChild(document.createTextNode(name + " - " + item["Year"].data));
             }
             if (item["Type"] == "TV") {
-
                 newItem.className = "bubble tv";
-                label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " " + name + " - " + runtime + "min"));
-
+                label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " - " + runtime + "min"));
+                title.appendChild(document.createTextNode(name + " - " + item["Year"].data));
             }
             if (item["Type"] == "Netflix") {
 
                 newItem.className = "bubble netflix";
-                label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " " + name + " - " + runtime + "min"));
-
+                label.appendChild(document.createTextNode(item["Series"].data + " " + "S" + item["Season"].data + "E" + item["Episode"].data + " - " + runtime + "min"));
+                title.appendChild(document.createTextNode(name + " - " + item["Year"].data));
             }
             if (item["Type"] == "OneShot") {
                 newItem.className = "bubble oneshot";
                 label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
+                title.appendChild(document.createTextNode(name + " - " + item["Year"].data));
 
             }
             if (item["Type"] == "WHIH") {
                 newItem.className = "bubble whih";
                 label.appendChild(document.createTextNode(name + " - " + runtime + "min"));
+                title.appendChild(document.createTextNode(name + " - " + item["Year"].data));
 
             }
-            var poster = document.createElement("img");
-            poster.src = "images/posters/" + item["Poster"].data + ".jpg";
-            poster.className = "poster";
-            details.appendChild(poster);
+
+            details.appendChild(title);
+
             var text = document.createElement("p");
             text.appendChild(document.createTextNode(item["Overview"].data));
             text.className = "details";
@@ -202,7 +211,7 @@ $(document).ready(function () {
 
         });
         $(function () {
-            $('.expander').simpleexpand();
+            $('.expander').simpleexpand({'hideMode' : 'fadeToggle'});
         });
         updateTotal();
     }

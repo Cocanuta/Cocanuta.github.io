@@ -120,6 +120,11 @@ label.css-label {
     margin:3px 0 3px;
 
 }
+.header.title
+{
+    font-size: 2vw;
+    background: none;
+}
 
 .container
 {
@@ -127,14 +132,53 @@ label.css-label {
     right: 5px;
     left: 5px;
     bottom: 5px;
-    
-}
-.expander
-{
-    position: absolute;
-    left: 92.5%;
+
 }
 .content {display:none;}
+
+.poster
+{
+    padding: 20px;
+    float: left;
+}
+
+.details
+{
+    padding: 20px;
+    float: none;
+    font-size: 2vw;
+    padding: 0 0 0 0;
+}
+
+.details.title
+{
+    font-size: 3vw;
+    padding: 20px 0 0 0;
+}
+
+.expander.expanded {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 1em solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(-90deg);
+    right: 15px;
+    top: 5px;
+}
+
+.expander.collapsed {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 1em solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+    right: 15px;
+    top: 20px;
+}
 
 
 

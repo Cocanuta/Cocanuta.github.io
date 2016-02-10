@@ -11,7 +11,7 @@ $(document).ready(function () {
             initialize();
         }
     };
-    xhttp.open("GET", "newDatabase.xml", true);
+    xhttp.open("GET", "../newDatabase.xml", true);
     xhttp.send();
 
     function toggleCheckbox(checkbox, item)
@@ -19,11 +19,13 @@ $(document).ready(function () {
         if(checkbox.checked)
         {
             subtractFromRuntime(parseInt(item["Runtime"].data));
+            item["Watched"].data = "true";
 
         }
         if(!checkbox.checked)
         {
             addToRuntime(parseInt(item["Runtime"].data));
+            item["Watched"].data = "false";
 
         }
         writeXML();
@@ -48,24 +50,6 @@ $(document).ready(function () {
         }
         var avg = sum / count;
         document.getElementById("remainingWatch").innerHTML = "YOU MUST WATCH " + Math.ceil((sum / DaysTillCivilWar()) / avg) + " ITEMS  PER DAY";
-        var percentage = Math.round((checkboxes.length - count)/checkboxes.length * 100);
-        var percElem = document.getElementById("remainingPercentage");
-        percElem.innerHTML = percentage.toString() + "%";
-        var percWidth = 0;
-        var id = setInterval(frame, 10);
-        function frame()
-        {
-            if(percWidth == percentage)
-            {
-                clearInterval(id);
-            }
-            else
-            {
-                percWidth++;
-                percElem.style.width = percWidth + '%';
-            }
-        }
-
     }
 
     function secondsToTime(mins)
@@ -170,7 +154,7 @@ $(document).ready(function () {
             expander.href = "#";
 
             var poster = document.createElement("img");
-            poster.src = "images/posters/" + item["Poster"].data + ".jpg";
+            poster.src = "../images/posters/" + item["Poster"].data + ".jpg";
             poster.className = "poster";
             details.appendChild(poster);
 
@@ -178,7 +162,7 @@ $(document).ready(function () {
             title.className = "details title";
 
             newItem.className = "bubble";
-            newItem.style.backgroundImage = "url('images/banners/" + item["Poster"].data + ".jpg')";
+            newItem.style.backgroundImage = "url('../images/banners/" + item["Poster"].data + ".jpg')";
 
             if (item["Type"] == "Movie") {
 
@@ -213,6 +197,7 @@ $(document).ready(function () {
 
 
             checkbox.type = "checkbox";
+            checkbox.onclick = function(){toggleCheckbox(this, item)};
             checkbox.className = "css-checkbox";
             if(item["Watched"].data.toString() == "true")
             {
@@ -222,7 +207,6 @@ $(document).ready(function () {
             {
                 checkbox.checked = false;
             }
-            checkbox.disabled = true;
             checkbox.id = name;
 
             label.htmlFor = name;
@@ -250,6 +234,43 @@ $(document).ready(function () {
             $('.expander').simpleexpand({'hideMode' : 'fadeToggle'});
         });
         updateTotal();
+    }
+
+    function writeXML() {
+
+        var file = "";
+
+        file += '<?xml version="1.0" encoding="utf-8"?>\n';
+        file += '<Database>\n';
+        file +='    <Items>\n';
+
+        items.forEach(function(item)
+        {
+            file += '        <' + item["Type"].toString() + '>';
+            file += '<Name>' + item["Name"].data.toString() + '</Name>';
+            file += '<Runtime>' + item["Runtime"].data.toString() + '</Runtime>';
+            file += '<Overview>' + item["Overview"].data.toString() + '</Overview>';
+            file += '<Year>' + item["Year"].data.toString() + '</Year>';
+            file += '<Poster>' + item["Poster"].data.toString() + '</Poster>';
+            if(item["Type"].toString() == "TV" || item["Type"].toString() == "Netflix")
+            {
+                file += '<Series>' + item["Series"].data.toString() + '</Series>';
+                file += '<Season>' + item["Season"].data.toString() + '</Season>';
+                file += '<Episode>' + item["Episode"].data.toString() + '</Episode>';
+            }
+            file += '<Watched>' + item["Watched"].data.toString() + '</Watched>';
+            file += '</' + item["Type"].toString() + '>\n';
+
+        });
+
+        file += '    </Items>\n';
+        file += '</Database>\n';
+
+        $.ajax({
+            url: '../writeXML.php',
+            type: 'POST',
+            data: 'data=' + file,
+        })
     }
 
     function read(xml) {

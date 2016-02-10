@@ -14,15 +14,49 @@ body
     z-index: 0;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+    -webkit-background-size: 100%;
+    background-image: linear-gradient(to bottom right, rgba(0, 47, 75, 0.47), #000000);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-.bubble.movie {
-    background: #3150c8;
-    background:-webkit-gradient(linear, 0 0, 0 100%, from(#6f86c8), to(#3150c8));
-    background:-moz-linear-gradient(#6f86c8, #3150c8);
-    background:-o-linear-gradient(#6f86c8, #3150c8);
-    background:linear-gradient(#6f86c8, #3150c8);
+#percentageBar {
+    width: 70%;
+    height: 3.5vw;
+    position: relative;
+    background-color: darkslategrey;
+    margin: auto;
 }
+#remainingPercentage {
+    width: 0px;
+    height: 3.5vw;
+    position: absolute;
+    background-color: darkgrey;
+    font-size: 3vw;
+}
+/*
+.bubble:before{
+    content: '';
+    position: absolute;
+    top: 80%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, white, transparent);
+    opacity: 1;
+}
+.bubble:before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 20%;
+    left: 0;
+    background-image: linear-gradient(to bottom, black, rgba(255, 255, 255, 0));
+    opacity: 1;
+}
+*/
 .bubble.oneshot {
     background: #9a3aa4;
     background:-webkit-gradient(linear, 0 0, 0 100%, from(#be42c8), to(#9a3aa4));
@@ -139,12 +173,18 @@ label.css-label {
     bottom: 5px;
 
 }
-.content {display:none;}
+.content
+{
+    display:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
 
 .poster
 {
     padding: 20px;
     float: left;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .details

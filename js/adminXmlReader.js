@@ -50,6 +50,23 @@ $(document).ready(function () {
         }
         var avg = sum / count;
         document.getElementById("remainingWatch").innerHTML = "YOU MUST WATCH " + Math.ceil((sum / DaysTillCivilWar()) / avg) + " ITEMS  PER DAY";
+        var percentage = Math.round((checkboxes.length - count)/checkboxes.length * 100);
+        var percElem = document.getElementById("remainingPercentage");
+        percElem.innerHTML = percentage.toString() + "%";
+        var percWidth = 0;
+        var id = setInterval(frame, 10);
+        function frame()
+        {
+            if(percWidth == percentage)
+            {
+                clearInterval(id);
+            }
+            else
+            {
+                percWidth++;
+                percElem.style.width = percWidth + '%';
+            }
+        }
     }
 
     function secondsToTime(mins)

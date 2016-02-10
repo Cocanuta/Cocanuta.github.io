@@ -26,6 +26,9 @@ body
     position: relative;
     background-color: darkslategrey;
     margin: auto;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
 }
 #remainingPercentage {
     width: 0px;
@@ -33,6 +36,9 @@ body
     position: absolute;
     background-color: darkgrey;
     font-size: 3vw;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
 }
 /*
 .bubble:before{
